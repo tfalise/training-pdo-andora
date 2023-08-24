@@ -39,11 +39,11 @@ After a few seconds, the code will be imported and you will be redirected to the
 
 The repository is organized the following way:
 
-* *.github* github workflows
-* *.vscode* Visual Studio Code specific configuration
-* *Resources* folder containing additional resources used for website and database deployment
-* *Scripts* Powershell scripts used for website deployment
-* *Sources* source code of the website
+* *.github*: github workflows
+* *.vscode*: Visual Studio Code specific configuration
+* *Resources*: folder containing additional resources used for website and database deployment
+* *Scripts*: Powershell scripts used for website deployment
+* *Sources*: source code of the website
 
 === Configure project teams
 
@@ -54,8 +54,8 @@ Next step is to configure the project to support our project organization, with 
 
 . Open your browser and navigate to your Azure DevOps project. On the main menu, click on the cogwheel option at the bottom left: *Project Settings*.
 . Under the *General* section, select the *Teams* option to access the teams configuration of the project.
-
- NOTE: By default, Azure DevOps has created a team for your project, named `<your project name> Team`. Keep the default team in the project to provide a transversal view of the full backlog for the product owner.
++
+NOTE: By default, Azure DevOps has created a team for your project, named `<your project name> Team`. Keep the default team in the project to provide a transversal view of the full backlog for the product owner.
 
 . Click on the *New Team* button in the top right corner of the screen.
 . On the *Create a new team* window, enter *Front Office* as the team name, and make sure to keep the option *Create an area path with the name of the team* checked at the bottom.
@@ -71,11 +71,11 @@ Now that the team have been created, you will configure them to have a proper ba
 . At the top of the screen, make sure you have the default project team selected in the team dropdown.
 . Navigate to the *Areas* tab at the top of the *Boards* section.
 . In the *Areas* section, open the options for the root area path and enable the *Include sub areas* options.
-
++
 NOTE: By enabling this option, we are allowing the default team to have visibility of the full product backlog, whatever is the exact area path selected for work items. This will ensure our product owner can work on product backlog items of both teams without having to navigate between the different teams.
 
 . Switch to *Front Office* or *Back Office* team at the top of the screen. You can check that the *Default area* is properly set to the matching area path for each team, and that they only have visibility over their own area path.
-
++
 NOTE: These settings are already defined because we selected the *Create an area path with the name of the team* option while creating the two teams. Otherwise, you would have needed to create both sub areas and assign them to the teams.
 
 === Configure project iterations
@@ -88,7 +88,7 @@ For this exercise, we will assume that our project is using the https://scaledag
 
 . Open your browser and navigate to your Azure DevOps project. On the main menu, click on the cogwheel option at the bottom left: *Project Settings*.
 . Under the *Boards* section, select the *Project configuration* option to access the configuration for the project teams. You should land on the *Iterations* configuration by default.
-
++
 NOTE: Azure DevOps automatically creates six sprints without dates when initializing a project with the Scrum template. For this exercise, we will add a level corresponding to PIs and reorganize the sprints.
 
 . Select the root iteration of your project, and click on the *New child* button above.
@@ -110,7 +110,7 @@ NOTE: Azure DevOps automatically creates six sprints without dates when initiali
 
 . Click the **Save and close** button.
 . Repeat the same operation to create a **PI 2** iteration at the same level.
-
++
 NOTE: Notice how Azure DevOps should automatically propose a *Start date* on the monday following the end of *PI 1*, and select the corresponding *End date* to have the same length as *PI 1* iteration.
 
 . Using drag and drop, assign Sprints 1 to 3 to the *PI 1* iteration, and Sprints 4 to 6 to the *PI 2* iteration.
@@ -121,7 +121,7 @@ NOTE: Notice how Azure DevOps should automatically propose a *Start date* on the
 . Now, navigate to the *Team configuration* option on the main menu to access the configuration for the project teams.
 . At the top of the screen, select the *Front Office* team in the team dropdown list.
 . Select the *Iterations* tab, which should display the current configuration for the selected team.
-
++
 NOTE: By default, the team should have no iteration enabled.
 
 . Click on the *Select iteration(s)* button to allow new iterations for the *Front Office* team.
