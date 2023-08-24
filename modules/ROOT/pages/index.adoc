@@ -52,6 +52,8 @@ Next step is to configure the project to support our project organization, with 
 * *Front Office* team working mainly on the website UI and UX
 * *Back Office* team working on the APIs used by the website
 
+Follow the steps below to create both teams.
+
 . Open your browser and navigate to your Azure DevOps project. On the main menu, click on the cogwheel option at the bottom left: *Project Settings*.
 . Under the *General* section, select the *Teams* option to access the teams configuration of the project.
 +
