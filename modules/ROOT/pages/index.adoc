@@ -1,0 +1,132 @@
+= Creating your Azure DevOps project
+
+== Lab requirements
+
+* This lab requires **Microsoft Edge** or an Azure DevOps supported browser
+* This lab requires an **Azure DevOps** organization with **Project Collection Administrator** permissions
+  * Create a free Azure DevOps organization [here](https://azure.microsoft.com/en-us/products/devops)
+  * Use the organization provided by your trainers
+
+== Lab overview
+
+The objective of this lab is to create a project that will host the product backlog, source code and pipelines required to develop the Talent Agile Shop website.
+
+In this lab, you will learn how to leverage the teams, iterations area paths to setup a full working environment for multiple teams collaborating on the same product.
+
+== Instructions
+
+=== Create a new project on Azure DevOps
+
+In this exercise, you will create a project on Azure DevOps that will host all artifacts required to run the product development: backlog, source code, pipelines and tests.
+
+1. Open you browser and navigate to your Azure DevOps organization.
+1. Click on **New Project** on the welcome page. Give your project a name starting with **TalentAgileShop_** and a suffix of your choice (use your name, surname or any combination of your choice).
+1. Select **Private** as the Visibility option.
+1. Open the **Advanced** parameters and check that the project is configured to use **Git** as Version control and **Scrum** as Work item process.
+1. Click on **Create**
+
+After a few seconds, your project will be created and you will land on its welcome page.
+
+=== Import project source code
+
+You will now import the base source code of your website.
+
+1. Open your browser and navigate to your Azure DevOps project. On the main menu (left of the screen), navigate to the **Repos > Files** section.
+1. As the code already exists, select the **Import** option.
+1. On the **Import a Git repository** window, fill the **Clone URL** textbox with the following URL: [https://github.com/TalentAgile/TalentAgileShop.git](https://github.com/TalentAgile/TalentAgileShop.git) and click on **Import**
+
+After a few seconds, the code will be imported and you will be redirected to the root folder view of the new repository.
+
+The repository is organized the following way:
+
+* **.github** github workflows
+* **.vscode** Visual Studio Code specific configuration
+* **Resources** folder containing additional resources used for website and database deployment
+* **Scripts** Powershell scripts used for website deployment
+* **Sources** source code of the website
+
+=== Configure project teams
+
+Next step is to configure the project to support our project organization, with two different development teams working on the product:
+
+* **Front Office** team working mainly on the website UI and UX
+* **Back Office** team working on the APIs used by the website
+
+1. Open your browser and navigate to your Azure DevOps project. On the main menu, click on the cogwheel option at the bottom left: **Project Settings**.
+1. Under the **General** section, select the **Teams** option to access the teams configuration of the project.
+
+   > **Note**: By default, Azure DevOps has created a team for your project, named `<your project name> Team`. Keep the default team in the project to provide a transversal view of the full backlog for the product owner.
+
+1. Click on the **New Team** button in the top right corner of the screen.
+1. On the **Create a new team** window, enter **Front Office** as the team name, and make sure to keep the option **Create an area path with the name of the team** checked at the bottom.
+1. Click on **Create**. The new team should appear in the list.
+1. Repeat the operation to create the **Back Office** team.
+
+=== Configure project areas
+
+Now that the team have been created, you will configure them to have a proper backlog configuration and allow the teams to work independently, while maintaining a global overview of the product backlog for the product owner.
+
+1. Open your browser and navigate to your Azure DevOps project. On the main menu, click on the cogwheel option at the bottom left: **Project Settings**.
+1. Under the **Boards** section, select the **Team configuration** option to access the configuration for the project teams.
+1. At the top of the screen, make sure you have the default project team selected in the team dropdown.
+1. Navigate to the **Areas** tab at the top of the **Boards** section.
+1. In the **Areas** section, open the options for the root area path and enable the **Include sub areas** options.
+
+   > **Note**: By enabling this option, we are allowing the default team to have visibility of the full product backlog, whatever is the exact area path selected for work items. This will ensure our product owner can work on product backlog items of both teams without having to navigate between the different teams.
+
+1. Switch to **Front Office** or **Back Office** team at the top of the screen. You can check that the **Default area** is properly set to the matching area path for each team, and that they only have visibility over their own area path.
+
+   > **Note**: These settings are already defined because we selected the **Create an area path with the name of the team** option while creating the two teams. Otherwise, you would have needed to create both sub areas and assign them to the teams.
+
+=== Configure project iterations
+
+Iterations are used by the teams to organize the rhythm of work, plan sprints and product increments. Depending on the framework used, you may want to fine-tune the default iterations proposed by Azure DevOps.
+
+For this exercise, we will assume that our project is using the [SAFe framework](https://scaledagileframework.com/) to manage Agile at scale, and prepare our iterations to support our two first PIs.
+
+==== Creating the iterations
+
+1. Open your browser and navigate to your Azure DevOps project. On the main menu, click on the cogwheel option at the bottom left: **Project Settings**.
+1. Under the **Boards** section, select the **Project configuration** option to access the configuration for the project teams. You should land on the **Iterations** configuration by default.
+
+   > **Note**: Azure DevOps automatically creates six sprints without dates when initializing a project with the Scrum template. For this exercise, we will add a level corresponding to PIs and reorganize the sprints.
+
+1. Select the root iteration of your project, and click on the **New child** button above.
+1. Enter the following details for the new iteration:
+
+   | Field | Value |
+   | --- | --- |
+   | **Iteration name** | PI 1 |
+   | **Start date** | Monday of the current week |
+   | **End date** | Friday of the third week after the start date |
+
+1. Click the **Save and close** button.
+1. Repeat the same operation to create a **PI 2** iteration at the same level.
+
+   > **Note**: Notice how Azure DevOps should automatically propose a **Start date** on the monday following the end of **PI 1**, and select the corresponding **End date** to have the same length as **PI 1** iteration.
+
+1. Using drag and drop, assign Sprints 1 to 3 to the **PI 1** iteration, and Sprints 4 to 6 to the **PI 2** iteration.
+1. Set the dates of all Sprints to match the three weeks of each PI iteration.
+
+==== Assigning iterations to teams
+
+1. Now, navigate to the **Team configuration** option on the main menu to access the configuration for the project teams.
+1. At the top of the screen, select the **Front Office** team in the team dropdown list.
+1. Select the **Iterations** tab, which should display the current configuration for the selected team.
+
+   > **Note**: By default, the team should have no iteration enabled.
+
+1. Click on the **Select iteration(s)** button to allow new iterations for the **Front Office** team.
+1. On the **Select iteration(s)** window, select your **PI 1\Sprint 1** iteration.
+1. Click on the **+ Iteration** button above twice. This should automatically add the **PI 1\Sprint 2** and **PI 1\Sprint 3** iterations for the **Front Office team**.
+1. Repeat the same operation for the **Back Office** team.
+
+You have now successfully created and configured iterations for your project.
+
+=== Checking the configuration
+
+Now that you have completed the configuration of the project, you can check the results by going to the different teams boards.
+
+1. Open your browser and navigate to your Azure DevOps project. On the main menu, under the **Boards** category, select the **Backlogs** options.
+1. Select the **Front Office backlogs** option to open the backlog for the **Front Office** team.
+1. If everything has been properly configured, you should see an empty backlog, with the available iterations on the right and **Sprint 1** marked as the current iteration.
